@@ -10,7 +10,7 @@ function LoginForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("http://127.0.0.1:3000/login", {
+    fetch("http://127.0.0.1:3000/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
