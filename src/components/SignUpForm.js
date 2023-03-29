@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function SignUpForm({ onLogin }) {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -13,7 +15,7 @@ function SignUpForm({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("/signup", {
+    fetch("http://127.0.0.1:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +30,10 @@ function SignUpForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          onLogin(user);
+          navigate('/navbar'); // Replace "/todos" with the actual path to your todos page
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -36,8 +41,8 @@ function SignUpForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="container mt-4">
-      <h2 className="text-center mb-4">Sign Up</h2>
+    <form className="container mt-4">
+      <h2 className="text-center mb-4"></h2>
       {errors.length > 0 && (
         <div className="alert alert-danger" role="alert">
           {errors.map((error) => (

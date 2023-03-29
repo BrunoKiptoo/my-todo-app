@@ -6,7 +6,7 @@ function TodoList() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("/todos")
+    fetch("http://127.0.0.1:3000/todos")
       .then((r) => r.json())
       .then(setTodos);
   }, []);

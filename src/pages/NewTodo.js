@@ -15,7 +15,7 @@ function NewTodo({ user }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/todos", {
+    fetch("http://127.0.0.1:3000/todos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function NewTodo({ user }) {
 
   function handleDelete() {
     setIsLoading(true);
-    fetch(`/todos/${id}`, {
+    fetch(`http://127.0.0.1:3000/todos/${id}`, {
       method: "DELETE",
     }).then((r) => {
       setIsLoading(false);
@@ -51,7 +51,7 @@ function NewTodo({ user }) {
 
   function handleEdit() {
     setIsLoading(true);
-    fetch(`/todos/${id}`, {
+    fetch(`http://127.0.0.1:3000/todos/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

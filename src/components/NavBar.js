@@ -4,7 +4,7 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 
 function NavBar({ user, setUser }) {
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch("http://127.0.0.1:3000/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
       }
