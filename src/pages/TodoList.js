@@ -6,7 +6,7 @@ function TodoList() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/todos")
+    fetch("https://task-train-rails-7l2f.onrender.com//todos")
       .then((r) => r.json())
       .then(setTodos);
   }, []);
